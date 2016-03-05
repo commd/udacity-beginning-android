@@ -10,6 +10,22 @@
     android:orientation="vertical"
     tools:context="com.example.android.justjava.MainActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Toppings"
+        android:layout_marginBottom="16dp"
+        android:textAllCaps="true" />
+    <CheckBox
+        android:id="@+id/whipCream_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Whipped cream"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp"
+        android:paddingLeft="24dp"
+        android:onClick="onCheckBoxClicked"
+        />
 
     <TextView
         android:layout_width="wrap_content"
