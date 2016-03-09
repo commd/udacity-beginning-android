@@ -16,6 +16,7 @@ public class MainActivity extends ActionBarActivity {
     int quantity = 2;
     int cupPrice = 5;
     boolean hasWhippedCream = false;
+    boolean hasCoco = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +55,10 @@ public class MainActivity extends ActionBarActivity {
      * Returns  order summary
      * input parameter is the total price of order.
      */
-    private String createOrderSummary (int totalPrice, boolean hasWhippedCream) {
+    private String createOrderSummary (int totalPrice, boolean hasWhippedCream, boolean hasCoco) {
         return ("Name: Coffee Customer\n" +
-                "Add whipped cream: " + hasWhippedCream + "\n" +
+                "Add whipped cream? " + hasWhippedCream + "\n" +
+                "Add chocolate? " + hasCoco + "\n" +
                 "Quantity: " + quantity + "\n" +
                 "Total: $" + totalPrice + "\n" +
                 "Thank you!");
@@ -67,7 +69,7 @@ public class MainActivity extends ActionBarActivity {
      */
     public void submitOrder(View view) {
         int total = calculatePrice();
-        String orderSummary = createOrderSummary(total, hasWhippedCream);
+        String orderSummary = createOrderSummary(total, hasWhippedCream, hasCoco);
         displayMessage(orderSummary);
     }
 
@@ -76,6 +78,13 @@ public class MainActivity extends ActionBarActivity {
      */
     public void onCheckBoxClicked (View view) {
         hasWhippedCream = ((CheckBox) view).isChecked();
+    }
+
+    /**
+     * This method is called when the chocolate checkBox button is clicked.
+     */
+    public void onCocoCheckBoxClicked (View view) {
+        hasCoco = ((CheckBox) view).isChecked();
     }
 
     /**
