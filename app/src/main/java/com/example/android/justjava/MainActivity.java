@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -17,6 +18,8 @@ public class MainActivity extends ActionBarActivity {
     int cupPrice = 5;
     boolean hasWhippedCream = false;
     boolean hasCoco = false;
+    EditText mName;
+    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +58,8 @@ public class MainActivity extends ActionBarActivity {
      * Returns  order summary
      * input parameter is the total price of order.
      */
-    private String createOrderSummary (int totalPrice, boolean hasWhippedCream, boolean hasCoco) {
-        return ("Name: Coffee Customer\n" +
+    private String createOrderSummary (String name, int totalPrice, boolean hasWhippedCream, boolean hasCoco) {
+        return ("Name: " + name + "\n" +
                 "Add whipped cream? " + hasWhippedCream + "\n" +
                 "Add chocolate? " + hasCoco + "\n" +
                 "Quantity: " + quantity + "\n" +
@@ -69,7 +72,9 @@ public class MainActivity extends ActionBarActivity {
      */
     public void submitOrder(View view) {
         int total = calculatePrice();
-        String orderSummary = createOrderSummary(total, hasWhippedCream, hasCoco);
+        mName = (EditText)findViewById(R.id.editText);
+        name = mName.getText().toString();
+        String orderSummary = createOrderSummary(name, total, hasWhippedCream, hasCoco);
         displayMessage(orderSummary);
     }
 
