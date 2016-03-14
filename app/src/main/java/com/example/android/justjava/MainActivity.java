@@ -1,11 +1,14 @@
 package com.example.android.justjava;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
 
@@ -14,12 +17,14 @@ import java.text.NumberFormat;
  */
 public class MainActivity extends ActionBarActivity {
 
-    int quantity = 2;
+    int quantity = 98;
     int cupPrice = 5;
     boolean hasWhippedCream = false;
     boolean hasCoco = false;
     EditText mName;
     String name;
+    int whippedCreamPrice = 1;
+    int chocolatePrice = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,24 +39,54 @@ public class MainActivity extends ActionBarActivity {
      * @param quantity is the number of cups of coffee ordered
      */
     private int calculatePrice() {
-        int price = quantity * cupPrice;
-        return price;
+        int price = cupPrice;
+
+        if (hasWhippedCream) {
+            price += whippedCreamPrice;
+        }
+
+        if (hasCoco) {
+            price += chocolatePrice;
+        }
+        return (quantity * price);
     }
 
     /**
      * This method is called when the '+' button is clicked.
      */
     public void increment (View view) {
-        quantity++;
-        displayQuantity(quantity);
+        Context context = getApplicationContext();
+        CharSequence text = "Cannot order more than 100.";
+        int duration = Toast.LENGTH_SHORT;
+
+        Log.v("increment", "quantity = " + quantity);
+        if (quantity >= 100) {
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            return;
+        } else {
+            quantity++;
+            displayQuantity(quantity);
+        }
+
     }
 
     /**
      * This method is called when the '-' button is clicked.
      */
     public void decrement (View view) {
-        quantity--;
-        displayQuantity(quantity);
+        Context context = getApplicationContext();
+        CharSequence text = "Cannot order less than zero.";
+        int duration = Toast.LENGTH_SHORT;
+
+        if (quantity <= 0) {
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            return;
+        } else {
+            quantity--;
+            displayQuantity(quantity);
+        }
     }
 
     /**
