@@ -1,6 +1,8 @@
 package com.example.android.justjava;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -106,11 +108,20 @@ public class MainActivity extends ActionBarActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        int total = calculatePrice();
-        mName = (EditText)findViewById(R.id.editText);
-        name = mName.getText().toString();
-        String orderSummary = createOrderSummary(name, total, hasWhippedCream, hasCoco);
-        displayMessage(orderSummary);
+//        int total = calculatePrice();
+//        mName = (EditText)findViewById(R.id.editText);
+//        name = mName.getText().toString();
+//        String orderSummary = createOrderSummary(name, total, hasWhippedCream, hasCoco);
+//        displayMessage(orderSummary);
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("geo:47.6, -122.3"));
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+            Toast.makeText(this, "Start new intent activity.", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Error creating intent.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**
