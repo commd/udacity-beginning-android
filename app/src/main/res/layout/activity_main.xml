@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:hint="Name"
+            android:hint="@string/customer_name"
             android:layout_marginBottom="16dp"
             android:ems="10"
             android:id="@+id/editText" />
@@ -26,7 +26,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Toppings"
+            android:text="@string/toppings"
             android:layout_marginBottom="16dp"
             android:textAllCaps="true" />
 
@@ -34,7 +34,7 @@
             android:id="@+id/whipCream_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Whipped cream"
+            android:text="@string/whippedCream"
             android:textSize="16sp"
             android:layout_marginBottom="8dp"
             android:paddingLeft="24dp"
@@ -45,7 +45,7 @@
             android:id="@+id/chocolate_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chocolate"
+            android:text="@string/chocolate"
             android:textSize="16sp"
             android:layout_marginBottom="16dp"
             android:paddingLeft="24dp"
@@ -55,7 +55,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Quantity"
+            android:text="@string/quantity"
             android:layout_marginBottom="16dp"
             android:textAllCaps="true" />
 
@@ -78,7 +78,7 @@
                 android:textColor="@android:color/black"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
-                android:text="98" />
+                android:text="2" />
 
             <Button
                 android:layout_width="48dp"
@@ -91,7 +91,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Order Summary"
+            android:text="@string/order"
             android:layout_marginTop="16dp"
             android:textAllCaps="true" />
 
@@ -108,7 +108,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="ORDER"
+            android:text="@string/order"
             android:onClick="submitOrder"/>
 
 

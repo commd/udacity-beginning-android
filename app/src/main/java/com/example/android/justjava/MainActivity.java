@@ -19,7 +19,7 @@ import java.text.NumberFormat;
  */
 public class MainActivity extends ActionBarActivity {
 
-    int quantity = 98;
+    int quantity = 2;
     int cupPrice = 5;
     boolean hasWhippedCream = false;
     boolean hasCoco = false;
@@ -108,20 +108,38 @@ public class MainActivity extends ActionBarActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-//        int total = calculatePrice();
-//        mName = (EditText)findViewById(R.id.editText);
-//        name = mName.getText().toString();
-//        String orderSummary = createOrderSummary(name, total, hasWhippedCream, hasCoco);
+        int total = calculatePrice();
+        mName = (EditText)findViewById(R.id.editText);
+        name = mName.getText().toString();
+        String orderSummary = createOrderSummary(name, total, hasWhippedCream, hasCoco);
 //        displayMessage(orderSummary);
 
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("geo:47.6, -122.3"));
+        /* Use below code for sending a intent to open a map */
+//        Intent intent = new Intent(Intent.ACTION_VIEW);
+//        intent.setData(Uri.parse("geo:47.6, -122.3"));
+//        if (intent.resolveActivity(getPackageManager()) != null) {
+//            startActivity(intent);
+//            Toast.makeText(this, "Start new intent activity.", Toast.LENGTH_SHORT).show();
+//        } else {
+//            Toast.makeText(this, "Error creating intent.", Toast.LENGTH_SHORT).show();
+//        }
+
+        String[] email_addresses = new String[30];
+        email_addresses[0] = "vidscmd@netscape.net";
+        email_addresses[1] = "chuie@pacbell.net";
+        /* use below code for sending a intent to send an email. */
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+//        intent.putExtra(Intent.EXTRA_EMAIL, email_addresses);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "JustJava Order for " + name);
+        intent.putExtra(Intent.EXTRA_TEXT, orderSummary);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
             Toast.makeText(this, "Start new intent activity.", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Error creating intent.", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     /**
