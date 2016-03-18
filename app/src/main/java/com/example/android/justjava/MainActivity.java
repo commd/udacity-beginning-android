@@ -128,14 +128,11 @@ public class MainActivity extends ActionBarActivity {
 //            Toast.makeText(this, "Error creating intent.", Toast.LENGTH_SHORT).show();
 //        }
 
-        String[] email_addresses = new String[30];
-        email_addresses[0] = "vidscmd@netscape.net";
-        email_addresses[1] = "chuie@pacbell.net";
+
         /* use below code for sending a intent to send an email. */
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:")); // only email apps should handle this
-//        intent.putExtra(Intent.EXTRA_EMAIL, email_addresses);
-        intent.putExtra(Intent.EXTRA_SUBJECT, "JustJava Order for " + name);
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.justJavaOrder) + " " + name);
         intent.putExtra(Intent.EXTRA_TEXT, orderSummary);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
@@ -169,12 +166,5 @@ public class MainActivity extends ActionBarActivity {
         quantityTextView.setText("" + numberX);
     }
 
-    /**
-     * This method displays the given text on the screen.
-     */
-    private void displayMessage(String message) {
-        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
-        orderSummaryTextView.setText(message);
-    }
 
 }
