@@ -13,6 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.NumberFormat;
+import java.util.Currency;
+import java.util.Locale;
+import java.lang.Object;
 
 /**
  * This app displays an order form to order coffee.
@@ -96,12 +99,12 @@ public class MainActivity extends ActionBarActivity {
      * input parameter is the total price of order.
      */
     private String createOrderSummary (String name, int totalPrice, boolean hasWhippedCream, boolean hasCoco) {
-        return ("Name: " + name + "\n" +
-                "Add whipped cream? " + hasWhippedCream + "\n" +
-                "Add chocolate? " + hasCoco + "\n" +
-                "Quantity: " + quantity + "\n" +
-                "Total: $" + totalPrice + "\n" +
-                "Thank you!");
+        return (getString(R.string.label_name) + " " + name + "\n" +
+                getString(R.string.add_whipped_cream) + " " + hasWhippedCream + "\n" +
+                getString(R.string.add_chocolate) + " " + hasCoco + "\n" +
+                getString(R.string.label_quantity) + " " + quantity + "\n" +
+                getString(R.string.label_total) + " " + Currency.getInstance(Locale.getDefault()).getSymbol() + totalPrice + "\n" +
+                getString(R.string.thankyou));
     }
 
     /**
