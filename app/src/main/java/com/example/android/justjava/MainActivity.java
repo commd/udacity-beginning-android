@@ -103,7 +103,8 @@ public class MainActivity extends ActionBarActivity {
                 getString(R.string.add_whipped_cream) + " " + hasWhippedCream + "\n" +
                 getString(R.string.add_chocolate) + " " + hasCoco + "\n" +
                 getString(R.string.label_quantity) + " " + quantity + "\n" +
-                getString(R.string.label_total) + " " + Currency.getInstance(Locale.getDefault()).getSymbol() + totalPrice + "\n" +
+//                getString(R.string.label_total) + " " + Currency.getInstance(Locale.getDefault()).getSymbol() + totalPrice + "\n" +
+                getString(R.string.label_total) + " " + NumberFormat.getCurrencyInstance().format(totalPrice) + "\n" +  // what instructor used
                 getString(R.string.thankyou));
     }
 
